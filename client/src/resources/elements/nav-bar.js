@@ -2,14 +2,14 @@ import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 
 @inject(Router)
-export class Home {
+export class NavBar {
   constructor(router) {
 	this.router = router;
-          this.message = 'Home';
+          this.message = 'NavBar';
   }
 
-  login(){
-	  this.router.navigate('users');
-  }
+//   login(){
+// 	  this.router.navigate('users');
+//   }
 }
 

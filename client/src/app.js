@@ -1,3 +1,6 @@
+import {PLATFORM} from 'aurelia-pal';
+// import bootstrap from 'bootstrap';
+
 export class App {
     configureRouter(config, router) {
       this.router = router;
@@ -6,14 +9,21 @@ export class App {
         { 
           route: ['','home'],
           name: 'home',       
-          moduleId: './modules/home' ,
+          moduleId: PLATFORM.moduleName('./modules/home') ,
           title: 'Home'
         },
         { 
           route: 'users',            
           name: 'users',      
-          moduleId: './modules/users', 
-          title: 'Users' }
+          moduleId: PLATFORM.moduleName('./modules/users'), 
+          title: 'Users' 
+        }, 
+        {
+          route: 'todos',
+          name: 'todos',
+          moduleId: PLATFORM.moduleName('./modules/todos'),
+          title: 'Todos'
+        }
       ]);
     }
   }
