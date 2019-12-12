@@ -1,11 +1,24 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Things Todo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline">
+                <div class="form-group mb-2">
+                    <label for="staticEmail2" class="sr-only">Email</label>
+                    <input value.bind="email" type="text" class="form-control" id="staticEmail2"
+                        value="email@example.com">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="inputPassword2" class="sr-only">Password</label>
+                    <input value.bind="password" type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                </div>
+                <button type="submit" click.trigger="login()" class="btn btn-primary mb-2">Login</button>
+                <span style="margin-left:20px;" show.bind="loginError">${loginError}</span>
+        </form>
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul show.bind="authenticated" class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="#users">Users <span class="sr-only">(current)</span></a>

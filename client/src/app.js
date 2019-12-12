@@ -1,16 +1,18 @@
 import {PLATFORM} from 'aurelia-pal';
-// import bootstrap from 'bootstrap';
+import {AuthorizeStep} from 'aurelia-auth';
 
 export class App {
     configureRouter(config, router) {
       this.router = router;
+      config.addPipelineStep('authorize', AuthorizeStep); 
       config.title = 'Things ToDo';
       config.map([
         { 
           route: ['','home'],
           name: 'home',       
           moduleId: PLATFORM.moduleName('./modules/home') ,
-          title: 'Home'
+          title: 'Home',
+          auth: false
         },
         { 
           route: 'users',            
@@ -22,7 +24,8 @@ export class App {
           route: 'todos',
           name: 'todos',
           moduleId: PLATFORM.moduleName('./modules/todos'),
-          title: 'Todos'
+          title: 'Todos',
+          auth: true
         }
       ]);
     }

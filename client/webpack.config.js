@@ -19,10 +19,15 @@ const title = 'Aurelia Navigation Skeleton';
 const outDir = path.resolve(__dirname, project.platform.output);
 const srcDir = path.resolve(__dirname, 'src');
 const nodeModulesDir = path.resolve(__dirname, 'node_modules');
+console.log("nodeModuleDir", nodeModulesDir)
 const baseUrl = '/';
 
 const cssRules = [
   { loader: 'css-loader' },
+  {
+    loader: 'postcss-loader',
+    options: { plugins: () => [require('autoprefixer')({ browsers: ['last 2 versions'] })] }
+  }
 ];
 
 
@@ -35,7 +40,8 @@ module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, h
     alias: { 'aurelia-binding': path.resolve(__dirname, 'node_modules/aurelia-binding') }
   },
   entry: {
-    app: ['aurelia-bootstrapper']
+    app: ['aurelia-bootstrapper'],
+    vender: ['bluebird', 'jquery', 'bootstrap']
   },
   mode: production ? 'production' : 'development',
   output: {

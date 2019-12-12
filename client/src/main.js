@@ -3,10 +3,14 @@
 import 'regenerator-runtime/runtime';
 import * as environment from '../config/environment.json';
 import {PLATFORM} from 'aurelia-pal';
-
+import 'bootstrap/dist/css/bootstrap.css';
+import config from './auth-config';
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
+    .plugin('aurelia-auth', (baseConfig)=>{
+      baseConfig.configure(config);
+    })
     .feature(PLATFORM.moduleName('resources/index'));
 
   aurelia.use.developmentLogging(environment.debug ? 'debug' : 'warn');
@@ -17,3 +21,4 @@ export function configure(aurelia) {
 
   aurelia.start().then(() => aurelia.setRoot(PLATFORM.moduleName('app')));
 }
+
