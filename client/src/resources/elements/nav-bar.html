@@ -5,7 +5,7 @@
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <form class="form-inline">
+        <form class="form-inline" show.bind="!authenticated">
                 <div class="form-group mb-2">
                     <label for="staticEmail2" class="sr-only">Email</label>
                     <input value.bind="email" type="text" class="form-control" id="staticEmail2"
@@ -21,10 +21,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul show.bind="authenticated" class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#users">Users <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#/users">Users <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#todos">Todos</a>
+                    <a class="nav-link" href="#/todos">Todos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" click.trigger="logout()">Logout</a>

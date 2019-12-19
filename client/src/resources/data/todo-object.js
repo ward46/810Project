@@ -32,6 +32,7 @@ export class Todo {
         let response = await this.data.get(url);
         if(!response.error) {
             this.todosArray = response; 
+            console.log("THe array of todos", this.todosArray)
         }else {
             this.todosArray = []; 
         }

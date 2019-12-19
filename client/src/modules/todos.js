@@ -4,21 +4,23 @@ import { Todo } from '../resources/data/todo-object';
 
 @inject(Router, Todo)
 export class Todos {
-	constructor(todo) {
+	constructor(router, todos) {
+		this.router = router;
 		this.message = 'Todos';
-		this.todo = todo;
+		this.todos = todos;
 		this.userObj = JSON.parse(sessionStorage.getItem('userObj'));
 		this.statuses = ['Todo', 'In Process', 'Completed'];
 		this.isCheckedCompleted = true;
+		this.showForm = true;
 	}
 
 	newTodo() {
-		this.todo.newTodo(this.userObj._id);
+		this.todos.newTodo(this.userObj._id);
 		this.showForm = true;
 	}
 
 	async saveTodo() {
-		await this.todo.saveTodo()
+		await this.todos.saveTodo()
 		this.getTodos();
 	}
 
@@ -32,21 +34,21 @@ export class Todos {
 	}
 
 	async getTodos() {
-		await this.todo.getTodos(this.userObj._id);
-		thisshowForm = false;
+		await this.todos.getTodos(this.userObj._id);
+		// this.showForm = false;
 	}
 
 	deleteTodo() {
 
 	}
 
-	editTodo(todo) {
-		this.todo.selectedTodo = todo;
+	editTodo(todos) {
+		this.todos.selectedTodo = todos;
 		this.showForm = true;
 	}
 
-	updateTodo(todo) {
-		this.todo.selectedTodo = todo;
+	updateTodo(todos) {
+		this.todos.selectedTodo = todos;
 		this.saveTodo();
 	}
 

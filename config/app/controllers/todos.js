@@ -37,7 +37,23 @@ module.exports = function (app, config) {
 		.catch(err => {
 		   return next(err);
 		});
-	  })
+      })
+      
+      router.route('/todos/user/:id').get((req, res, next) => {
+		logger.log('info', 'Get todo %s', req.params.id);
+        Todo.find({'userId':req.params.id})
+            .populate("userId")
+            .then(todo => {
+                if (todo) {
+                    res.status(200).json(todo);
+                } else {
+                    res.status(404).json({ message: "No todo found" });
+                }
+            })
+            .catch(error => {
+                return next(error);
+            });
+	});
 
 	router.route('/todos/:id').get((req, res, next) => {
 		logger.log('info', 'Get todo %s', req.params.id);

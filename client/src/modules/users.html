@@ -1,8 +1,8 @@
 <template>
-	<h1>${message}</h1>
-	<button click.trigger="logout()">Logout</button>
-
-    <button click.trigger="newUser()">New User</button>
+	<style>
+	
+	</style>
+	<h1 class="jumbotron text-center">${message}</h1>
+    <button class="btn btn-primary" click.trigger="newUser()">New User</button>
     <compose view="./components/editUser.html"> </compose>
-
 </template>

@@ -2,5 +2,11 @@
 	<div class="jumbotron">
 		<h1 class="text-center">${message}</h1>
 	</div>
+	<div class="container">
+		<button class="btn btn-primary" show.bind="!createNew" click.trigger="newUser()">New User</button>
+		<button class="btn btn-danger" show.bind="createNew" click.trigger="cancelNewUser()">Cancel</button>
+	</div>
+	
+    <compose show.bind="createNew" view="./components/editUser.html"> </compose>
 	<!-- <button class="btn btn-primary" click.trigger="login()">Login</button> -->
 </template>

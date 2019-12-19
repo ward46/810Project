@@ -2,12 +2,13 @@ import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { User } from '../resources/data/user-object';
 
-@inject(Router)
+@inject(Router, User)
 export class Users {
-	constructor(router) {
+	constructor(router, users) {
 		this.router = router;
 		this.message = 'Users';
 		this.users = users;
+		this.createNew = false;
 	}
 
 	newUser() {
@@ -19,6 +20,7 @@ export class Users {
 			email: "",
 			password: ""
 		}
+		this.createNew = true;
 	}
 	async save() {
 		if (this.user && this.user.firstName && this.user.lastName
