@@ -21,11 +21,12 @@ export class DataServices {
                 })
                 .withInterceptor({
                     request(request) {
-                        console.log('Requesting ${request.method} ${request.url}');
+                        console.log("token", localStorage.getItem('aurelia_token'))
+                        console.log(`Requesting ${request.method} ${request.url}`);
                         return request;
                     },
                     response(response) {
-                        console.log('Received ${response.status} ${response.url}');
+                        console.log(`Received ${response.status} ${response.url}`);
                         return response;
                     }
                 });

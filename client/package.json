@@ -14,7 +14,9 @@
     "aurelia-fetch-client": "^1.8.2",
     "autoprefixer": "^9.7.3",
     "bootstrap": "^4.4.1",
+    "flatpickr": "^4.6.3",
     "jquery": "^3.4.1",
+    "moment": "^2.24.0",
     "popper.js": "^1.16.0",
     "postcss-loader": "^3.0.0"
   },
