@@ -1,8 +1,10 @@
 <template>
-	<style>
+    <h1 class="jumbotron text-center">${message}</h1>
+   
+    <div class="container">
+		<button class="btn btn-primary" show.bind="!createNew" click.trigger="newUser()">New User</button>
+		<button class="btn btn-danger" show.bind="createNew" click.trigger="cancelNewUser()">Cancel</button>
+	</div>
 	
-	</style>
-	<h1 class="jumbotron text-center">${message}</h1>
-    <button class="btn btn-primary" click.trigger="newUser()">New User</button>
-    <compose view="./components/editUser.html"> </compose>
+    <compose show.bind="createNew" view="./components/editUser.html"> </compose>
 </template>

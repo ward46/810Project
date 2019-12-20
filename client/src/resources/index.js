@@ -1,12 +1,8 @@
-import {PLATFORM} from 'aurelia-pal';
-
-
 export function configure(config) {
   config.globalResources([
-    PLATFORM.moduleName('./elements/nav-bar'),
-    PLATFORM.moduleName('./elements/flat-picker'),
-    PLATFORM.moduleName('./value-converters/date-format'),
-    // PLATFORM.moduleName('./value-converters/filter-todos')
+    './elements/nav-bar',
+    './elements/flat-picker',
+    './value-converters/date-format',
+    './value-converters/filter-todos'
   ]);
 }
-

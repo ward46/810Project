@@ -36,17 +36,10 @@ export class NavBar {
 
   }
   attached() {
-    // document.querySelector('.navbar-nav a')[0]
-    //   .on('click', function() {
-    //     document.querySelector('.navbar-nav')
-    //       .querySelector('li.active').classList.remove('active');
-
-    //     console.log("this is: ", this)
-    //   })
-    // $('.navbar-nav a').on('click', function () {
-    //   $('.navbar-nav').find('li.active').removeClass('active');
-    //   $(this).parent('li').addClass('active');
-    // });
+    $('.navbar-nav a').on('click', function () {
+      $('.navbar-nav').find('li.active').removeClass('active');
+      $(this).parent('li').addClass('active');
+    });
   }
 
   bind() {

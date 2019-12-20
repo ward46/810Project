@@ -8,7 +8,7 @@ const fs= require('fs');
 const cors = require('cors');
 
 module.exports = function (app, config) {
-  app.use(cors({origin: 'http://localhost:8080'}));
+  app.use(cors({origin: 'http://localhost:9000'}));
   let Todos = require('./app/models/todos');
   let User  = require('./app/models/users');
   let TodoController = require('./app/controllers/todos');

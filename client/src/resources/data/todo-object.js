@@ -7,16 +7,22 @@ export class Todo {
         this.TODO_SERVICE = 'todos';
     }
 
-    newTodo(id){
+    newTodo(user_id){
         this.selectedTodo = {};
+        this.selectedTodo.userId = user_id;
         this.selectedTodo.todo = "";
         this.selectedTodo.detail = "";
         this.selectedTodo.dateDue = new Date();
         this.selectedTodo.status = "Todo";
-        this.selectedTodo.todoId = id;
+        this.selectedTodo._id;
     }
-    async saveTodo() {
+    async saveTodo(userObj) {
         let serverResponse;
+        console.log("this.selectedTodo is: ", this.selectedTodo)
+        if(!this.selectedTodo.userId) {
+            this.selectedTodo.userId = userObj._id;
+        }
+        
         if (this.selectedTodo) {
             if (this.selectedTodo._id) {
                 let url = this.TODO_SERVICE + "/" + this.selectedTodo._id;
@@ -27,6 +33,12 @@ export class Todo {
             return serverResponse;
         }
     }
+
+    async deleteTodo(todo) {
+        let url = this.TODO_SERVICE + "/" + todo._id;
+        let serverResponse = await this.data.delete(url);
+        return serverResponse
+    }
     async getTodos(userid) {
         let url = this.TODO_SERVICE + '/user/' + userid; 
         let response = await this.data.get(url);
@@ -35,6 +47,7 @@ export class Todo {
             console.log("THe array of todos", this.todosArray)
         }else {
             this.todosArray = []; 
+            
         }
     }
 }

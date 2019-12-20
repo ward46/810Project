@@ -6,6 +6,7 @@ import { User } from '../resources/data/user-object';
 export class Users {
 	constructor(router, users) {
 		this.router = router;
+		console.log("router", router)
 		this.message = 'Users';
 		this.users = users;
 		this.createNew = false;
@@ -22,6 +23,9 @@ export class Users {
 		}
 		this.createNew = true;
 	}
+	cancelNewUser() {
+		this.createNew = false; 
+	  }
 	async save() {
 		if (this.user && this.user.firstName && this.user.lastName
 			&& this.user.email && this.user.password) {

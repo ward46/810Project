@@ -11,7 +11,10 @@ export class Todos {
 		this.userObj = JSON.parse(sessionStorage.getItem('userObj'));
 		this.statuses = ['Todo', 'In Process', 'Completed'];
 		this.isCheckedCompleted = true;
-		this.showForm = true;
+		this.todos.selectedTodo = {}
+		// this.status;
+		console.log("totods", this.todos)
+		console.log("routererTODOws", this.router)
 	}
 
 	newTodo() {
@@ -20,16 +23,18 @@ export class Todos {
 	}
 
 	async saveTodo() {
-		await this.todos.saveTodo()
+		console.log("sasvginhgg")
+		await this.todos.saveTodo(this.userObj)
+		this.showForm = false;
 		this.getTodos();
 	}
 
-	Cancel() {
+	cancel() {
 		this.showForm = false;
 	}
 
 	async attached() {
-		this.showForm = true;
+		// this.showForm = true;
 		await this.getTodos();
 	}
 
@@ -38,17 +43,18 @@ export class Todos {
 		// this.showForm = false;
 	}
 
-	deleteTodo() {
-
+	async deleteTodo(todo) {
+		await this.todos.deleteTodo(todo)
+		this.getTodos()
 	}
 
-	editTodo(todos) {
-		this.todos.selectedTodo = todos;
+	editTodo(todo) {
+		this.todos.selectedTodo = todo;
 		this.showForm = true;
 	}
 
-	updateTodo(todos) {
-		this.todos.selectedTodo = todos;
+	updateTodo(todo) {
+		this.todos.selectedTodo = todo;
 		this.saveTodo();
 	}
 
